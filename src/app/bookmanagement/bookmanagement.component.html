@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Borrowers</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  
+</head>
+
+<body>
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <a class="logo d-flex align-items-center">
+        <img src="assets/img/lnulogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <span class="d-none d-lg-block" style="color: white">University Library</span>
+      </a>
+      <i class="fas fa-list toggle-sidebar-btn" style="color: white;"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#">
+            <img src="assets/img/uly.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block ps-2" style="color: white">Hello Laurence</span>
+          </a><!-- End Profile Image Icon -->
+        </li>
+      </ul>
+    </nav>
+  </header><!-- End Header -->
+
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item about-us-item">
+        <a class="nav-link">
+          <i class="fas fa-book" style="color: #012970;"></i>
+          <span>Books</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/borrowers">
+          <i class="fas fa-user"></i>
+          <span>Borrowers</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/librarians">
+          <i class="fas fa-users"></i>
+          <span>Librarian</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fas fa-history"></i>
+          <span>Report & Analytics</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+    </ul>
+  </aside><!-- End Sidebar -->
+
+  <main id="main" class="main">
+    <section class="section contact">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="info-box card">
+            <h3>Add Books</h3>
+            <form id="myForm" enctype="multipart/form-data">
+                <div class="form-group mb-3">
+                    <label for="isbn">ISBN Number:</label>
+                    <input type="text" id="isbn" name="isbn" class="form-control" required>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="title">Book Title:</label>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="type">Book Type:</label>
+                    <input type="text" id="type" name="type" class="form-control" required>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="author">Author Name:</label>
+                    <input type="text" id="author" name="author" class="form-control" required>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="edition">Edition:</label>
+                    <input type="text" id="edition" name="edition" class="form-control" required>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="pages">Pages:</label>
+                    <input type="number" id="pages" name="pages" class="form-control" required>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="publisher">Publisher:</label>
+                    <input type="text" id="publisher" name="publisher" class="form-control" required>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="purchase_date">Purchase Date:</label>
+                    <input type="date" id="purchase_date" name="purchase_date" class="form-control" required>
+                </div>
+            
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
+          </div>
+
+
+          <div class="info-box card">
+            <h3>Books List </h3>
+            
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="credits">
+      A premiere teacher education institution and Eastern Visayas exemplifying integrity, Excellence and Service
+    </div>
+  </footer><!-- End Footer -->
+
+  <script>
+    (function() {
+      "use strict";
+
+      const select = (el, all = false) => {
+        el = el.trim();
+        if (all) {
+          return [...document.querySelectorAll(el)];
+        } else {
+          return document.querySelector(el);
+        }
+      };
+
+      const on = (type, el, listener, all = false) => {
+        if (all) {
+          select(el, all).forEach(e => e.addEventListener(type, listener));
+        } else {
+          select(el, all).addEventListener(type, listener);
+        }
+      };
+
+      if (select('.toggle-sidebar-btn')) {
+        on('click', '.toggle-sidebar-btn', function(e) {
+          select('body').classList.toggle('toggle-sidebar');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
